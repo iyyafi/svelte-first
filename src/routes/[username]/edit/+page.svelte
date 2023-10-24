@@ -89,7 +89,7 @@
       <p>
         Profile Link:
         <a href={`/${$userData?.username}`} class="link link-accent">
-          https://kung.foo/{$userData?.username}
+          https://svelte-first-88fcb.web.app/{$userData?.username}
         </a>
       </p>
     </div>

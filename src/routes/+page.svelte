@@ -24,7 +24,7 @@
           >
         {:else}
           <a href="/login" class="btn btn-primary">Get Started</a>
-          <a href="/fireship" class="btn btn-secondary">Example Profile</a>
+          <a href="/iyyafi" class="btn btn-secondary">Example Profile</a>
         {/if}
         <p class="py-6">
           Learn how to build this app from scratch in the <a

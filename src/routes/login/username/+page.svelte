@@ -47,7 +47,7 @@
       links: [
         {
           title: "Test Link",
-          url: "https://kung.foo",
+          url: "https://svelte-first-88fcb.web.app",
           icon: "custom",
         },
       ],
