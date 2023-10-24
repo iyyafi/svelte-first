@@ -9,7 +9,7 @@ export const load = (async ({ locals, params }) => {
     throw redirect(301, "/login");
   }
 
-  const userDoc = await adminDB.collection("users").doc(uid).get();
+  const userDoc = await adminDB.collection("users").doc(uid!).get();
   const { username, bio } = userDoc.data()!;
 
   if (params.username !== username) {

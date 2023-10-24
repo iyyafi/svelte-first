@@ -88,6 +88,7 @@ interface UserData {
   username: string;
   bio: string;
   photoURL: string;
+  published: boolean;
   links: any[];
 }
 

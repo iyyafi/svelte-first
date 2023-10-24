@@ -2,16 +2,25 @@
   import AuthCheck from "$lib/components/AuthCheck.svelte";
   import { db, user, userData } from "$lib/firebase";
   import { doc, getDoc, writeBatch } from "firebase/firestore";
-
   let username = "";
   let loading = false;
   let isAvailable = false;
-
   let debounceTimer: NodeJS.Timeout;
 
-  async function checkAvailability() {
+  const re = /^(?=[a-zA-Z0-9._]{3,16}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
+
+  $: isValid =
+    username?.length > 2 && username.length < 16 && re.test(username);
+  $: isTouched = username.length > 0;
+  $: isTaken = isValid && !isAvailable && !loading;
+
+  function checkAvailability() {
     isAvailable = false;
     clearTimeout(debounceTimer);
+    if (!isValid) {
+      loading = false;
+      return;
+    }
 
     loading = true;
 
@@ -49,13 +58,6 @@
     username = "";
     isAvailable = false;
   }
-
-  const re = /^(?=[a-zA-Z0-9._]{3,16}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
-
-  $: isValid =
-    username?.length > 2 && username.length < 16 && re.test(username);
-  $: isTouched = username.length > 0;
-  $: isTaken = isValid && !isAvailable && !loading;
 </script>
 
 <AuthCheck>
